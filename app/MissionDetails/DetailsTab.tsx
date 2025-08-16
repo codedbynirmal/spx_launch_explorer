@@ -5,7 +5,6 @@ import { SafeAreaView } from "react-native-safe-area-context";
 export default function DetailsTab({ missionDetail }: any) {
   const detailsData = [
     { label: MISSION_DETAILS.NAME, value: missionDetail.name },
-    { label: MISSION_DETAILS.DETAILS, value: missionDetail.details },
     { label: MISSION_DETAILS.REGION, value: missionDetail.region },
     { label: MISSION_DETAILS.LOCALITY, value: missionDetail.locality },
     { label: MISSION_DETAILS.ATTEMPTS, value: missionDetail.launch_attempts },
@@ -51,7 +50,6 @@ const styles = StyleSheet.create({
   label: {
     fontWeight: "bold",
     marginRight: 8,
-    width:'20%',
   },
   value: {
     flex: 1,
