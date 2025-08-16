@@ -11,6 +11,7 @@ export const MISSIONS_LIST={
 
 export const MISSION_DETAILS={
     NAME:"Name",
+    DETAILS:"Details",
     REGION:"Region",
     ATTEMPTS:"Launch Attempts",
     LOCALITY:"Locality",

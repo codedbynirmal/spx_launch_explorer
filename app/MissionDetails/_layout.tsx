@@ -10,7 +10,7 @@ import MapTab from "./MapTab";
 
 const Tab = createMaterialTopTabNavigator();
 
-export default function MissionDetailsLayout({ route }: any) {
+export default function MissionDetailsLayout() {
   const { launchpad_id } = useLocalSearchParams<{ launchpad_id: string }>();
 
   const [missionDetail, setMissionDetail] = useState(null);
