@@ -37,5 +37,5 @@ A React Native (Expo) app to explore past space launch missions, view their deta
 
 # 📷 App Screenshots
 
-<img src="assets/Screenshot_20250816-221940.png" width="300" /> <img src="assets/Screenshot_20250816-223950.png" width="300" />
+<img src="assets/Screenshot_20250816-221940.png" width="300" /> <img src="assets/Screenshot_discover_page.jpeg" width="300" />
 <img src="assets/Screenshot_20250816-223958.png" width="300" /> <img src="assets/Screenshot_20250816-224014.png" width="300" />
