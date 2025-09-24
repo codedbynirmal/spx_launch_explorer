@@ -20,6 +20,7 @@ const Discover = () => {
   const [searchValue, setSearchValue] = useState<string>("");
   const [filteredLaunches, setFilteredLaunches] = useState<LaunchListType>([]);
   const [refreshing, setRefreshing] = useState(false);
+  const [currentTime, setCurrentTime] = useState(Date.now());
 
   const fetchMissions = useCallback(() => {
     fetch(FETCH_ALL_LAUNCHES_URL)
@@ -51,6 +52,13 @@ const Discover = () => {
     setFilteredLaunches(filteredList);
   }, [searchValue, allLaunches]);
 
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentTime(Date.now());
+    }, 1000);
+    return () => clearInterval(timer);
+  }, []);
+
   const searchHeader = useMemo(
     () => (
       <View style={styles.inputBox}>
@@ -77,7 +85,7 @@ const Discover = () => {
           showsVerticalScrollIndicator={false}
           keyExtractor={(item) => item.id}
           data={filteredLaunches}
-          renderItem={({ item }) => <LaunchRow item={item} />}
+          renderItem={({ item }) => <LaunchRow item={item} currentTime={currentTime} />}
           refreshControl={
             <RefreshControl
               refreshing={refreshing}

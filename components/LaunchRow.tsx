@@ -6,6 +6,7 @@ import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 type propType = {
   item: LaunchItem;
+  currentTime: number;
 };
 
 const LaunchRow = (props: propType) => {
@@ -24,6 +25,11 @@ const LaunchRow = (props: propType) => {
     });
   }, [props.item]);
 
+  const timeElapsed = useMemo(() => {
+    const diff = props.currentTime - new Date(props.item.date_utc).getTime();
+    return Math.floor(diff / 1000);
+  }, [props.currentTime, props.item.date_utc]);
+
   return (
     <TouchableOpacity activeOpacity={0.5} style={styles.container} onPress={navToDetails}>
       <Image
@@ -31,17 +37,21 @@ const LaunchRow = (props: propType) => {
         style={styles.img}
       />
       <View style={styles.dataBox}>
-        <View>
+        <View style={styles.detailsContainer}>
           <Text
             style={{ fontSize: 12 }}
           >{`Flight #${props.item.flight_number}`}</Text>
           <Text style={{ fontWeight: "bold" }}>{props.item.name}</Text>
-          <Text style={{ fontSize: 13 }}>{formattedDate}</Text>
+          <Text style={styles.subtext}>{formattedDate}</Text>
         </View>
         <View style={{ flexDirection: "row" }}>
           {/* {props.item.success && (
             // <Text style={{ color: "green", fontSize:10 }}>Success</Text>
           )} */}
+          <View>
+          <Text style={styles.subtext}>{"Time elapsed: "}</Text>
+          <Text>{timeElapsed}</Text>
+          </View>
           <Ionicons name="chevron-forward-outline" size={22} />
         </View>
       </View>
@@ -68,5 +78,7 @@ const styles = StyleSheet.create({
     paddingLeft: "5%",
     flex: 1,
   },
+  detailsContainer:{ maxWidth:'50%' },
   img: { height: 50, width: 50, borderWidth: 0.5 },
+  subtext:{fontSize:13},
 });
